@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+/* db.MeetingFormSchema.createIndex( { label: 1 } , { sparse: true } ) */
+
 const MeetingFormSchema = new Schema ({
-    formCreatedAt: {
+/*     formCreatedAt: {
         type: Date,
         default: Date.now
-    },
+    }, */
     meetingTitle: {
         type: String
         /* required: true */
@@ -44,21 +47,16 @@ const MeetingFormSchema = new Schema ({
         /* required: true */
     },
     guests: {
-        type: [{ 
+        type: Array
+/*         type: [{
             label: {
-                type: String,
-                unique: true
+                type: String
             }, 
             value: {
-                type: String,
-                unique: true
+                type: String
             },
-            __isNew__: Boolean }]
+            __isNew__: Boolean }] */
     }
   });
 
   module.exports = MeetingFormModel = mongoose.model("MeetingFormModel", MeetingFormSchema)
-
-/* 
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow')); */

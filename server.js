@@ -9,7 +9,6 @@ connectDB()
 app.use(express.json({ extended: false}))
 app.use(cors())
 
-/* app.get('/', (req, res) => res.send('API Running')); */
 app.use('/setupmeeting/form', require("./routes/setupmeeting/form"))
 app.use('/setupmeeting/meeting', require("./routes/setupmeeting/meeting"))
 

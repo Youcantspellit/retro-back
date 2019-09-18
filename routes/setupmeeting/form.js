@@ -4,8 +4,6 @@ const { check, validationResult } = require('express-validator');
 const MeetingFormModel = require('../../models/SetUpMeetingData')
 
 
-/* const MeetingForm = new MeetingFormModel({}) */
-
  router.post("/",  [
    check('meetingTitle', "Please add a meeting title.").isString().bail().not().isEmpty(),
    check('meetingDate').not().isEmpty(),
@@ -38,9 +36,16 @@ const MeetingFormModel = require('../../models/SetUpMeetingData')
       template,
       guests
     })
-    await setMeetingInfo.save()
-    console.log(req.body)
-    res.send("form respons")
+
+    try {
+      await setMeetingInfo.save()
+      res.status(200).json({ success: true, message: 'Meeting has been created.' })
+    } catch (error) {
+      res.status(500).json({ success: false, error: 'Unexpected server error.' })
+      console.error(error)
+    }
+
+    
  })
 
  module.exports = router;
