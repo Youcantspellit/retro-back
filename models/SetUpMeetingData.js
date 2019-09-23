@@ -47,16 +47,25 @@ const MeetingFormSchema = new Schema ({
         /* required: true */
     },
     guests: {
-        type: Array
-/*         type: [{
-            label: {
-                type: String
+       type: [{
+            _id:{
+                type: Number
+            },
+            label:{
+                type: String,
+                unique: false
             }, 
             value: {
-                type: String
-            },
-            __isNew__: Boolean }] */
+                type: String,
+                unique: false
+            }, 
+            __isNew__: {
+                type: Boolean,
+                unique: false
+            }
+        }],
     }
-  });
+  },
+  { versionKey: false });
 
   module.exports = MeetingFormModel = mongoose.model("MeetingFormModel", MeetingFormSchema)
