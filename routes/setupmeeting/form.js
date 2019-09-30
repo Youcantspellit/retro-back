@@ -14,7 +14,7 @@ const MeetingFormModel = require('../../models/SetUpMeetingData')
    check('reviewMode'),
    check('isVoteMode').isBoolean(),
    check('voteMode'),
-   check('template').isString().not().isEmpty(),
+   /* check('template').isObject().not().isEmpty(), */
    check('guests').isArray() 
  ], async (req,res)=>{
     const errors = validationResult(req)

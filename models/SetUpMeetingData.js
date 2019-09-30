@@ -43,7 +43,7 @@ const MeetingFormSchema = new Schema ({
         type: Number
     },
     template: {
-        type: String
+        type: Object
         /* required: true */
     },
     guests: {
