@@ -13,14 +13,19 @@ const MeetingFormSchema = new Schema ({
         type: String
         /* required: true */
     } ,
-    meetingDate: {
-        type: Date,
+    nowLater: {
+        type: Object
         /* required: true */
+    } ,
+/*    ---------DATE AND TIME FIELDS---------
+     meetingDate: {
+        type: Date,
+        required: true 
     },
     meetingTime: {
-        type: Date
-        /* required: true */
-    },
+        type: Date,
+        required: true 
+    }, */
     isCommentMode: {
         type: Boolean
         /* required: true */

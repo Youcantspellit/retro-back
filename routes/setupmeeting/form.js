@@ -6,8 +6,10 @@ const MeetingFormModel = require('../../models/SetUpMeetingData')
 
  router.post("/",  [
    check('meetingTitle', "Please add a meeting title.").isString().bail().not().isEmpty(),
-   check('meetingDate').not().isEmpty(),
-   check('meetingTime').not().isEmpty(),
+  /* check('nowLater').isObject().not().isEmpty(),  */
+ /*  ---------DATE AND TIME FIELDS---------
+    check('meetingDate').not().isEmpty(),
+   check('meetingTime').not().isEmpty(), */
    check('isCommentMode').isBoolean(),
    check('commentMode'),
    check('isReviewMode').isBoolean(),
@@ -22,11 +24,13 @@ const MeetingFormModel = require('../../models/SetUpMeetingData')
       console.log(errors)
       return res.status(422).json({errors: errors.array()})
     }
-    const {meetingTitle, meetingDate, meetingTime, isCommentMode, commentMode, isReviewMode, reviewMode, isVoteMode, voteMode, template, guests }= req.body
+    const {meetingTitle, nowLater, /* meetingDate, meetingTime, */ isCommentMode, commentMode, isReviewMode, reviewMode, isVoteMode, voteMode, template, guests }= req.body
     setMeetingInfo = new MeetingFormModel({
       meetingTitle,
+      nowLater,
+/* ---------DATE AND TIME FIELDS---------
       meetingDate,
-      meetingTime,
+      meetingTime, */
       isCommentMode,
       commentMode,
       isReviewMode,
